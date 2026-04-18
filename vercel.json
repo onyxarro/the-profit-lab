@@ -2,5 +2,11 @@
   "outputDirectory": "site",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "crons": [
+    {
+      "path": "/api/drip",
+      "schedule": "0 9 * * *"
+    }
   ]
 }
