@@ -6,12 +6,12 @@
 // after creating your products
 // ===========================================
 const GUMROAD_LINKS = {
-  'ai-prompt-pack': 'https://theprofitlab.gumroad.com/l/ai-prompt-pack',
-  'marketing-blueprint': 'https://theprofitlab.gumroad.com/l/marketing-blueprint',
-  'content-toolkit': 'https://theprofitlab.gumroad.com/l/content-toolkit',
-  'side-hustle': 'https://theprofitlab.gumroad.com/l/side-hustle-guide',
-  'productivity': 'https://theprofitlab.gumroad.com/l/productivity-system',
-  'bundle': 'https://theprofitlab.gumroad.com/l/profit-lab-bundle'
+  'ai-prompt-pack': 'https://theprofitlabco.gumroad.com/l/zdmtb',
+  'marketing-blueprint': 'https://theprofitlabco.gumroad.com/l/irjstt',
+  'content-toolkit': 'https://theprofitlabco.gumroad.com/l/egdeeu',
+  'side-hustle': 'https://theprofitlabco.gumroad.com/l/majbkg',
+  'productivity': 'https://theprofitlabco.gumroad.com/l/xytxx',
+  'bundle': 'https://theprofitlabco.gumroad.com/l/grghmw'
 };
 
 // Wire up all Gumroad buy buttons
