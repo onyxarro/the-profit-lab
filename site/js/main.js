@@ -57,29 +57,46 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// Email form handler (connects to MailerLite or shows confirmation)
+// Email form handler — MailerLite via serverless API
 const emailForm = document.getElementById('emailForm');
 if (emailForm) {
   emailForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = emailForm.querySelector('input[type="email"]').value;
+    const emailInput = emailForm.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
     const btn = emailForm.querySelector('button');
     const originalText = btn.textContent;
+
+    if (!email) return;
 
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    // TODO: Replace with MailerLite embedded form or server-side integration
-    // For now, show confirmation and store email intent
-    btn.textContent = '✓ You\'re in! Stay tuned.';
-    btn.style.background = '#22c55e';
-    emailForm.querySelector('input[type="email"]').value = '';
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        btn.textContent = '✓ Check your inbox!';
+        btn.style.background = '#22c55e';
+        emailInput.value = '';
+      } else {
+        btn.textContent = 'Something went wrong. Try again.';
+        btn.style.background = '#ef4444';
+      }
+    } catch (err) {
+      btn.textContent = 'Something went wrong. Try again.';
+      btn.style.background = '#ef4444';
+    }
 
     setTimeout(() => {
       btn.textContent = originalText;
       btn.style.background = '';
       btn.disabled = false;
-    }, 3000);
+    }, 4000);
   });
 }
 
