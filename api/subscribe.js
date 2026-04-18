@@ -32,10 +32,11 @@ export default async function handler(req, res) {
       })
     });
 
-    const contactData = await contactRes.json();
-
-    if (!contactRes.ok && contactData.code !== 'duplicate_parameter') {
-      return res.status(contactRes.status).json({ error: contactData.message || 'Subscription failed' });
+    if (!contactRes.ok && contactRes.status !== 204) {
+      const contactData = await contactRes.json().catch(() => ({}));
+      if (contactData.code !== 'duplicate_parameter') {
+        return res.status(contactRes.status).json({ error: contactData.message || 'Subscription failed' });
+      }
     }
 
     // 2. Send Email 1 immediately (Welcome + Download)
